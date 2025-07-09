@@ -1,0 +1,392 @@
+.nft-viewer {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 10px;
+  height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+.controls {
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.controls h2 {
+  color: white;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.contract-input {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.contract-input input {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  min-width: 200px;
+  font-size: 11px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contract-input input::placeholder {
+  color: #888;
+}
+
+.contract-input button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contract-input button:first-of-type {
+  background: #4caf50;
+  color: white;
+}
+
+.contract-input button:first-of-type:hover:not(:disabled) {
+  background: #45a049;
+  transform: translateY(-1px);
+}
+
+.contract-input button:first-of-type:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.debug-toggle {
+  background: #6c757d;
+  color: white;
+}
+
+.debug-toggle:hover {
+  background: #5a6268;
+  transform: translateY(-1px);
+}
+
+.account-info {
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 8px;
+  text-align: center;
+}
+
+.account-info small {
+  display: inline-block;
+  margin: 0 6px;
+  font-size: 9px;
+}
+
+.loading {
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  margin: 20px 0;
+}
+
+.spinner {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  margin: 10px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.debug-info {
+  background: rgba(0, 0, 0, 0.8);
+  color: #00ff00;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 10px 0;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.debug-info h3 {
+  color: #fff;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.debug-info pre {
+  font-family: 'Courier New', monospace;
+  font-size: 8px;
+  line-height: 1.1;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.no-nfts {
+  text-align: center;
+  color: white;
+  margin: 20px 0;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.no-nfts code {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 8px;
+}
+
+.debug-btn {
+  background: #17a2b8;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 10px;
+  transition: background 0.3s;
+}
+
+.debug-btn:hover {
+  background: #138496;
+}
+
+.nft-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+  flex: 1;
+}
+
+.nft-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nft-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.nft-image {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+  background: #f8f9fa;
+}
+
+.nft-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.no-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #666;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.nft-info {
+  padding: 12px;
+}
+
+.nft-info h3 {
+  margin: 0 0 6px 0;
+  color: #2c3e50;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.collection {
+  color: #7f8c8d;
+  font-size: 11px;
+  margin: 3px 0;
+  font-weight: 600;
+}
+
+.token-id {
+  color: #95a5a6;
+  font-size: 10px;
+  margin: 3px 0;
+}
+
+.network-badge {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline-block;
+  margin: 3px 0;
+}
+
+.description {
+  color: #34495e;
+  font-size: 11px;
+  margin: 6px 0;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.contract-info {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #ecf0f1;
+}
+
+.contract-info small {
+  color: #7f8c8d;
+  font-size: 9px;
+  font-family: monospace;
+  word-break: break-all;
+}
+
+.bscscan-link {
+  margin-top: 8px;
+}
+
+.bscscan-link a {
+  background: #f39c12;
+  color: white;
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.bscscan-link a:hover {
+  background: #d68910;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1200px) {
+  .nft-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nft-viewer {
+    padding: 8px;
+    height: calc(100vh - 80px);
+  }
+  
+  .nft-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 8px;
+  }
+  
+  .nft-image {
+    height: 120px;
+  }
+  
+  .contract-input {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .contract-input input {
+    min-width: 150px;
+  }
+  
+  .controls {
+    padding: 8px;
+  }
+  
+  .account-info small {
+    display: block;
+    margin: 1px 0;
+  }
+}
+@media (max-width: 768px) {
+  .nft-viewer {
+    padding: 8px;
+    height: calc(100vh - 80px);
+  }
+  
+  .nft-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 8px;
+  }
+  
+  .nft-image {
+    height: 120px;
+  }
+  
+  .contract-input {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .contract-input input {
+    min-width: 150px;
+  }
+  
+  .controls {
+    padding: 8px;
+  }
+  
+  .account-info small {
+    display: block;
+    margin: 1px 0;
+  }
+  
+  .credit-section {
+    margin-top: 10px;
+    padding: 8px;
+  }
+  
+  .credit-text {
+    font-size: 11px;
+  }
+  
+  .developer-name {
+    font-size: 12px;
+    display: block;
+    margin-top: 2px;
+  }
+}
